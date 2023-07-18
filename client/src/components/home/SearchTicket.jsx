@@ -1,20 +1,30 @@
 import { useState } from "react";
+import { useQuery } from "react-query";
+import { API } from "../../config/api";
 
 const SearchTicket = ({ submitData, submitEmpty }) => {
+  const { data: stations } = useQuery("stationsSearchCache", async () => {
+    const response = await API.get("/stations");
+    return response.data.data.station;
+  });
+
+  const [adult, setAdult] = useState(0);
+  const [child, setChild] = useState(0);
   const [form, setForm] = useState({
     start_station: "",
     destination_station: "",
     date: "",
+    adult: 0,
+    child: 0,
   });
 
   const handleSubmit = () => {
-    if (form.start_station != "" && form.destination_station != "" && date != "") {
+    if ((form.start_station != "" && form.destination_station != "" && form.date != "") || form.adult != 0 || form.child != 0) {
       submitData(form);
     } else {
       submitEmpty(form);
     }
   };
-
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -31,27 +41,22 @@ const SearchTicket = ({ submitData, submitEmpty }) => {
       <div className="col-span-4 mt-3 mb-10">
         <h4 className="text-2xl font-avenir font-medium">Tiket Kereta Api</h4>
         <h5 className="text-[18px] font-avenir font-extrabold mt-1">Asal</h5>
-        <input type="text" onChange={handleChange} name="start_station" className="text-md w-full border-2 border-soft mt-2 px-2 py-0.5 placeholder-soft rounded-md" placeholder="Jakarta" />
+        <select onChange={handleChange} name="start_station" className="text-md w-full border-2 border-soft mt-2 px-2 py-1.5 placeholder-soft rounded-md appearance-none">
+          <option value="" hidden>
+            Stasiun Keberangkatan
+          </option>
+          {stations?.map((item) => {
+            return (
+              <option key={item.id} value={item.name}>
+                {item.name}
+              </option>
+            );
+          })}
+        </select>
         <div className="flex mt-5">
           <div className="w-7/12">
             <h5 className="text-[18px] font-avenir font-extrabold">Tanggal Berangkat</h5>
-            <input
-              type="text"
-              onChange={handleChange}
-              className="w-7/12 py-0.5 px-2 border-2 border-soft text-soft rounded-md"
-              onFocus={(e) => {
-                e.currentTarget.type = "date";
-                e.currentTarget.focus();
-              }}
-              onBlur={(e) => {
-                e.currentTarget.type = "text";
-                e.currentTarget.placeholder = "DD/MM/YYYY";
-                e.currentTarget.blur();
-              }}
-              placeholder="DD/MM/YYYY"
-              name="date"
-              id="date"
-            />
+            <input type="date" onChange={handleChange} className="w-7/12 py-0.5 px-2 border-2 border-soft text-soft rounded-md appearance-none" placeholder="DD/MM/YYYY" name="date" id="date" />
           </div>
           <div className="flex items-center self-start">
             <input type="checkbox" name="round-trip" id="round-trip" />
@@ -66,13 +71,24 @@ const SearchTicket = ({ submitData, submitEmpty }) => {
       </div>
       <div className="col-span-4 mpl-0 pr-3 mt-11">
         <h5 className="text-[18px] font-avenir font-extrabold mt-1">Tujuan</h5>
-        <input onChange={handleChange} name="destination_station" type="text" className="text-md w-full border-2 border-soft mt-2 px-2 py-0.5 placeholder-soft rounded-md" placeholder="Jakarta" />
+        <select onChange={handleChange} name="destination_station" className="text-md w-full border-2 border-soft mt-2 px-2 py-1.5 placeholder-soft rounded-md appearance-none">
+          <option value="" hidden>
+            Stasiun Tujuan
+          </option>
+          {stations?.map((item) => {
+            return (
+              <option key={item.id} value={item.name}>
+                {item.name}
+              </option>
+            );
+          })}
+        </select>
         <div className="flex justify-between mt-4">
           <div className="w-1/3 pr-2">
             <h5 className="text-[18px] font-avenir font-extrabold mt-1">Dewasa</h5>
-            <select name="dewasa" id="dewasa" className="w-full border-2 border-soft p-1 text-soft bg-white rounded-md">
-              <option value="" hidden>
-                2
+            <select name="adult" id="adult" onChange={handleChange} className="w-full border-2 border-soft p-1 text-soft bg-white rounded-md">
+              <option value="0" hidden>
+                0
               </option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -84,9 +100,9 @@ const SearchTicket = ({ submitData, submitEmpty }) => {
           </div>
           <div className="w-1/3 px-1">
             <h5 className="text-[18px] font-avenir font-extrabold mt-1">Bayi</h5>
-            <select name="bayi" id="bayi" className="w-full border-2 border-soft p-1 text-soft bg-white rounded-md">
-              <option value="" hidden>
-                2
+            <select name="child" id="child" onChange={handleChange} className="w-full border-2 border-soft p-1 text-soft bg-white rounded-md">
+              <option value="0" hidden>
+                0
               </option>
               <option value="1">1</option>
               <option value="2">2</option>

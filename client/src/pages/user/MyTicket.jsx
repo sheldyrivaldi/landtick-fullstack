@@ -2,10 +2,11 @@ import "../../assets/css/index.css";
 import Ticket from "../../components/ticket/Ticket";
 import Navbar from "../../components/navbar/Navbar";
 import { useQuery } from "react-query";
-import { API } from "../../config/api";
+import { API, setAuthToken } from "../../config/api";
 import formatDate from "../../utils/FormatDate";
 
 const MyTicket = () => {
+  setAuthToken(localStorage.token);
   const { data: tickets } = useQuery("myTicketCache", async () => {
     const response = await API.get("/ticket/my-ticket");
     return response.data.data;

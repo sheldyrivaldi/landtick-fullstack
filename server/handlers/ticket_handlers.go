@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"fmt"
 	resultdto "landtick/dto/result"
 	ticketdto "landtick/dto/ticket"
 	transactiondto "landtick/dto/transaction"
@@ -45,8 +44,7 @@ func (h *handlerTicket) SearchTickets(c echo.Context) error {
 	date := c.QueryParam("date")
 	startStationQuery := c.QueryParam("startStation")
 	destinationStationQuery := c.QueryParam("destinationStation")
-
-	fmt.Println(date)
+	qty := c.QueryParam("qty")
 
 	startStation, err := h.TicketRepositories.GetStationByName(startStationQuery)
 	if err != nil {
@@ -57,8 +55,8 @@ func (h *handlerTicket) SearchTickets(c echo.Context) error {
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, resultdto.ErrorResult{Status: "Failed", Message: err.Error()})
 	}
-
-	tickets, err := h.TicketRepositories.SearchTickets(date, startStation.ID, destinationStation.ID)
+	parseQty, _ := strconv.Atoi(qty)
+	tickets, err := h.TicketRepositories.SearchTickets(date, startStation.ID, destinationStation.ID, parseQty)
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, resultdto.ErrorResult{Status: "Failed", Message: err.Error()})
 	}

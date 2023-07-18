@@ -8,7 +8,7 @@ import (
 
 type TicketRepositories interface {
 	FindTickets() ([]models.Ticket, error)
-	SearchTickets(date string, startStationID, destinationStationID int) ([]models.Ticket, error)
+	SearchTickets(date string, startStationID, destinationStationID int, qty int) ([]models.Ticket, error)
 	GetTicket(ID int) (models.Ticket, error)
 	GetMyTicket(UserID int) ([]models.MyTicketTransaction, error)
 	CreateTicket(ticket models.Ticket) (models.Ticket, error)
@@ -29,9 +29,9 @@ func (r *repository) FindTickets() ([]models.Ticket, error) {
 	return tickets, err
 }
 
-func (r *repository) SearchTickets(date string, startStationID, destinationStationID int) ([]models.Ticket, error) {
+func (r *repository) SearchTickets(date string, startStationID, destinationStationID int, qty int) ([]models.Ticket, error) {
 	var tickets []models.Ticket
-	err := r.db.Where("start_date = ? AND start_station_id = ? AND destination_station_id = ?", date, startStationID, destinationStationID).Preload("StartStation").Preload("DestinationStation").Find(&tickets).Error
+	err := r.db.Where("start_date = ? AND start_station_id = ? AND destination_station_id = ? AND qty >= ?", date, startStationID, destinationStationID, qty).Preload("StartStation").Preload("DestinationStation").Find(&tickets).Error
 
 	return tickets, err
 

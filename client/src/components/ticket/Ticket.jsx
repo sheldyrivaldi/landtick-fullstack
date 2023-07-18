@@ -12,7 +12,7 @@ const Ticket = ({ type, brand, startTime, startDate, startCity, startStation, en
   const containerRef = useRef();
 
   const handleClickPayment = () => {
-    navigate("/payments");
+    navigate("/user/payment");
   };
 
   const handleClickShowModal = () => {
@@ -102,7 +102,7 @@ const Ticket = ({ type, brand, startTime, startDate, startCity, startStation, en
               </div>
             </div>
           </div>
-          {isPaid ? (
+          {status == "Approved" ? (
             <div className="w-[20%] h-full p-2 flex flex-col justify-start items-center ">
               <div className="flex flex-col justify-center items-end">
                 <h4 className=" text-3xl font-semibold text-right">Kereta Api</h4>

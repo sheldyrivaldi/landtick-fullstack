@@ -11,6 +11,8 @@ const Schedule = () => {
     start_station: "",
     destination_station: "",
     date: "",
+    adult: 0,
+    child: 0,
   });
   const [isSearch, setIsSearch] = useState(false);
 
@@ -26,14 +28,14 @@ const Schedule = () => {
 
   let { data: tickets, refetch } = isSearch
     ? useQuery("ticketsCache", async () => {
-        const response = await API.get(`/ticket?date=${form.date}&startStation=${form.start_station}&destinationStation=${form.destination_station}`);
+        const response = await API.get(`/ticket?date=${form.date}&startStation=${form.start_station}&destinationStation=${form.destination_station}&qty=${parseInt(form.adult) + parseInt(form.child)}`);
         return response.data.data;
       })
     : useQuery("ticketsCache", async () => {
         const response = await API.get("/tickets");
         return response.data.data;
       });
-  console.log(tickets);
+  console.log(isSearch);
 
   useEffect(() => {
     refetch();
