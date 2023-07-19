@@ -168,22 +168,6 @@ func (h *handlerTicket) GetMyTicket(c echo.Context) error {
 	})
 
 }
-func (h *handlerTicket) GetTicketPayment(c echo.Context) error {
-	claims := c.Get("userLogin")
-	id := claims.(jwt.MapClaims)["id"].(float64)
-	userID := int(id)
-
-	ticket, err := h.TicketRepositories.GetTicketPayment(userID)
-	if err != nil {
-		return c.JSON(http.StatusInternalServerError, resultdto.ErrorResult{Status: "Failed", Message: err.Error()})
-	}
-
-	return c.JSON(http.StatusOK, resultdto.SuccessResult{
-		Status: "Success",
-		Data:   convertResponseMyTicketTransaction(ticket),
-	})
-
-}
 
 func convertResponseTicketCreate(t models.Ticket) ticketdto.TicketResponseDTOCreate {
 	return ticketdto.TicketResponseDTOCreate{

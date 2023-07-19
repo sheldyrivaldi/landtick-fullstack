@@ -6,6 +6,7 @@ import (
 	"landtick/pkg/mysql"
 	"landtick/routes"
 	"log"
+	"os"
 
 	"github.com/joho/godotenv"
 	"github.com/labstack/echo/v4"
@@ -33,6 +34,11 @@ func main() {
 
 	routes.RouteInit(e.Group("/api/v1"))
 
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8000"
+	}
+
 	fmt.Println("Serve unning on port 8000")
-	e.Logger.Fatal(e.Start(":8000"))
+	e.Logger.Fatal(e.Start(":" + port))
 }

@@ -15,7 +15,6 @@ type TicketRepositories interface {
 	UpdateTicket(ticket models.Ticket) (models.Ticket, error)
 	DeleteTicket(ticket models.Ticket) (models.Ticket, error)
 	GetStationByName(name string) (models.Station, error)
-	GetTicketPayment(UserID int) (models.MyTicketTransaction, error)
 }
 
 func RepositoryTicket(db *gorm.DB) *repository {
@@ -75,11 +74,4 @@ func (r *repository) GetStationByName(name string) (models.Station, error) {
 	err := r.db.First(&station, "name = ?", name).Error
 
 	return station, err
-}
-
-func (r *repository) GetTicketPayment(UserID int) (models.MyTicketTransaction, error) {
-	var ticket models.MyTicketTransaction
-	err := r.db.Preload("Ticket.StartStation").Preload("Ticket.DestinationStation").Preload("User").Where("user_id = ?", UserID).Order("id DESC").First(&ticket).Error
-
-	return ticket, err
 }
