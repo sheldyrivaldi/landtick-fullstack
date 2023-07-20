@@ -35,7 +35,6 @@ const Schedule = () => {
         const response = await API.get("/tickets");
         return response.data.data;
       });
-  console.log(isSearch);
 
   useEffect(() => {
     refetch();

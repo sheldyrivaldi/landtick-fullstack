@@ -59,7 +59,7 @@ const App = () => {
           <Route element={<PrivateRouteLogin />}>
             <Route element={<PrivateRouteUser />}>
               <Route path="/user/ticket" element={<MyTicket />} />
-              <Route path="/user/payment" element={<Payment />} />
+              <Route path="/user/payment/:id" element={<Payment />} />
             </Route>
             <Route element={<PrivateRouteAdmin />}>
               <Route path="/admin" element={<Transactions />} />

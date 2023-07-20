@@ -1,5 +1,4 @@
 export default function formatDate(date) {
-  console.log("ini date", date);
   const [day, month, year] = date.split("-");
 
   const newDate = new Date(year, month - 1, day);

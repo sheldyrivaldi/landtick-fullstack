@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useQuery, useMutation } from "react-query";
 import { API, setAuthToken } from "../../config/api";
@@ -14,11 +14,14 @@ const Payment = () => {
   const navigate = useNavigate();
   setAuthToken(localStorage.token);
 
+  const param = useParams();
+  console.log(param.id);
+
   const { data: tickets } = useQuery("myTicketPaymentCache", async () => {
     try {
-      const response = await API.get("/ticket/payment");
+      const response = await API.get(`/transaction/${param.id}`);
       console.log("ini response", response);
-      return response.data.data;
+      return response.data.data.transaction;
     } catch (error) {
       console.log("gagal", error);
       throw error;

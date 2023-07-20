@@ -2,26 +2,23 @@ import { useNavigate } from "react-router-dom";
 import { useContext, useState, useRef, useEffect } from "react";
 import TicketDetail from "./TicketDetail";
 
-const Ticket = ({ type, brand, startTime, startDate, startCity, startStation, endTime, endDate, endCity, endStation, ticketDay, ticketDate, NIK, name, telp, email, ticketQrCode, status }) => {
+const Ticket = ({ id, type, brand, startTime, startDate, startCity, startStation, endTime, endDate, endCity, endStation, ticketDay, ticketDate, NIK, name, telp, email, ticketQrCode, status }) => {
   const [showModal, setShowModal] = useState(false);
-
-  const isPaid = true;
 
   const navigate = useNavigate();
 
   const containerRef = useRef();
 
   const handleClickPayment = () => {
-    navigate("/user/payment");
+    console.log(`/user/payment/${id}`);
+    navigate(`/user/payment/${id}`);
   };
 
   const handleClickShowModal = () => {
     setShowModal(true);
-    console.log(showModal);
   };
   const handleClickDropModal = () => {
     setShowModal(false);
-    console.log(showModal);
   };
 
   return (

@@ -25,6 +25,7 @@ const MyTicket = () => {
             return (
               <Ticket
                 key={item.id}
+                id={item.id}
                 ticketQrCode="TCK0101"
                 brand={item?.ticket?.name_train}
                 type={item?.ticket?.type_train}
