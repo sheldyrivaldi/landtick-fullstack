@@ -5,7 +5,6 @@ import (
 	"landtick/database"
 	"landtick/pkg/mysql"
 	"landtick/routes"
-	"log"
 	"os"
 
 	"github.com/joho/godotenv"
@@ -14,10 +13,7 @@ import (
 )
 
 func main() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
+	godotenv.Load()
 
 	e := echo.New()
 
