@@ -1,3 +1,9 @@
+import LandtickWhite from "../../assets/images/landtick-white.svg";
+import QRCode from "../../assets/images/qr-code.svg";
+import Pass from "../../assets/images/pass.svg";
+import Clock from "../../assets/images/clock.svg";
+import Warning from "../../assets/images/warning.svg";
+
 const TicketDetail = ({ ticketQrInvoice, ticketDate, ticketDay, brand, type, startTime, startDate, startCity, startStation, endTime, endDate, endCity, endStation, ticketQrCode, NIK, name, telp, email, click }) => {
   const handleCLickDropModal = () => {
     click();
@@ -14,7 +20,7 @@ const TicketDetail = ({ ticketQrInvoice, ticketDate, ticketDay, brand, type, sta
           <div>
             <div className="w-64 h-24  -mr-14 -mt-14 rounded-[120px] flex justify-start pb-1.5 pl-8 items-end bg-gradient-to-b from-strong-pink from-50% to-soft-pink">
               <h4 className="font-opticon -mb-3 text-2xl text-white">LandTick</h4>
-              <img className="h-7 ml-2" src="/src/assets/images/landtick-white.svg" alt="logo" />
+              <img className="h-7 ml-2" src={LandtickWhite} alt="logo" />
             </div>
           </div>
         </div>
@@ -63,23 +69,23 @@ const TicketDetail = ({ ticketQrInvoice, ticketDate, ticketDay, brand, type, sta
             </div>
           </div>
           <div className="mr-8 flex flex-col justify-center items-center">
-            <img className="w-[200px] h-[200px]" src="/src/assets/images/qr-code.svg" alt="qr-code" />
+            <img className="w-[200px] h-[200px]" src={QRCode} alt="qr-code" />
             <h2 className="mt-3 text-center text-lg">{ticketQrCode}</h2>
           </div>
         </div>
         <div className="flex justify-evenly items-center mx-2 mt-4 py-4 border-y border-black">
           <div className="px-4 flex items-center">
-            <img className="h-10" src="/src/assets/images/pass.svg" alt="pass" />
+            <img className="h-10" src={Pass} alt="pass" />
             <h5 className="ml-3 text-xs ">Tunjukan e-ticket dan identitas para penumpang saat checkin</h5>
           </div>
           <div className="px-4 flex items-center">
-            <img className="h-full" src="/src/assets/images/clock.svg" alt="pass" />
+            <img className="h-full" src={Clock} alt="pass" />
             <h5 className="ml-3 text-xs ">
               Check-in <span className="font-bold">paling lambat 90 menit</span> sebelum keberangkatan
             </h5>
           </div>
           <div className="px-4 flex items-center">
-            <img className="h-full" src="/src/assets/images/warning.svg" alt="pass" />
+            <img className="h-full" src={Warning} alt="pass" />
             <h5 className="ml-3 text-xs ">Waktu tertera adalah waktu stasiun setempat</h5>
           </div>
         </div>

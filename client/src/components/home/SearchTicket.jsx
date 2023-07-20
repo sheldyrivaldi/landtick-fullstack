@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useQuery } from "react-query";
 import { API } from "../../config/api";
+import Train from "../../assets/images/train.svg";
+import RoundTrip from "../../assets/images/round-trip.svg";
 
 const SearchTicket = ({ submitData, submitEmpty }) => {
   const { data: stations } = useQuery("stationsSearchCache", async () => {
@@ -34,7 +36,7 @@ const SearchTicket = ({ submitData, submitEmpty }) => {
       <div className="col-span-3 bg-[#F2F2F2]">
         <div className="flex items-center self-start mt-3 bg-white">
           <div className="w-[8px] h-12 bg-[#E67E22]"></div>
-          <img className="h-10" src="/src/assets/images/train.svg" alt="train" />
+          <img className="h-10" src={Train} alt="train" />
           <h4 className="">Tiket Kereta Api</h4>
         </div>
       </div>
@@ -66,7 +68,7 @@ const SearchTicket = ({ submitData, submitEmpty }) => {
       </div>
       <div className="flex justify-center relative top-16 col-span-1">
         <div className="w-12 h-12 flex  left-3.5 cursor-pointer justify-center bg-gradient-to-l from-strong-pink to-soft-pink hover:bg-gradient-to-l hover:from-[#ec7a7aaf] hover:to-[#ec7ab7c0] rounded-full">
-          <img className="w-6" src="/src/assets/images/round-trip.svg" alt="round-trip" />
+          <img className="w-6" src={RoundTrip} alt="round-trip" />
         </div>
       </div>
       <div className="col-span-4 mpl-0 pr-3 mt-11">

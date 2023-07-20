@@ -3,6 +3,9 @@ import EditStatus from "../../pages/admin/EditStatus";
 import { useEffect, useState } from "react";
 import { useQuery, useMutation } from "react-query";
 import { API } from "../../config/api";
+import Search from "../../assets/images/search.svg";
+import Edit from "../../assets/images/edit.svg";
+import Trash from "../../assets/images/trash.svg";
 
 const TransactionItem = (props) => {
   const [showTicketDetail, setShowTicketDetail] = useState(false);
@@ -57,9 +60,9 @@ const TransactionItem = (props) => {
         <div className="text-sm px-1">{props.proof}</div>
         <div className={statusColor(props.status)}>{props.status}</div>
         <div className="text-sm px-1 flex justify-start items-center">
-          <img onClick={handleShowTicketDetail} className="w-6 h-6 mr-6 cursor-pointer hover:w-7 hover:h-7 transition-transform" src="/src/assets/images/search.svg" alt="search" />
-          <img onClick={handleShowEditTicket} className="w-6 h-6 mr-6 cursor-pointer hover:w-7 hover:h-7 transition-transform" src="/src/assets/images/edit.svg" alt="edit" />
-          <img onClick={props.delete} className="w-6 h-6 mr-6 cursor-pointer hover:w-7 hover:h-7 transition-transform" src="/src/assets/images/trash.svg" alt="trash" />
+          <img onClick={handleShowTicketDetail} className="w-6 h-6 mr-6 cursor-pointer hover:w-7 hover:h-7 transition-transform" src={Search} alt="search" />
+          <img onClick={handleShowEditTicket} className="w-6 h-6 mr-6 cursor-pointer hover:w-7 hover:h-7 transition-transform" src={Edit} alt="edit" />
+          <img onClick={props.delete} className="w-6 h-6 mr-6 cursor-pointer hover:w-7 hover:h-7 transition-transform" src={Trash} alt="trash" />
         </div>
       </div>
 

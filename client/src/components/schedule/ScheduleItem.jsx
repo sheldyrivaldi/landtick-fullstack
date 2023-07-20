@@ -5,6 +5,7 @@ import SuccessMessage from "./SuccessMessage";
 import FailedMessage from "./FailedMessage";
 import { useMutation } from "react-query";
 import { API, setAuthToken } from "../../config/api";
+import Arrow from "../../assets/images/arrow.svg";
 
 const ScheduleItem = (props) => {
   const [state] = useContext(UserContext);
@@ -61,7 +62,7 @@ const ScheduleItem = (props) => {
             <h6 className="block text-[14px] font-avenir text-soft">{props.startStation}</h6>
           </div>
           <div className="flex justify-center items-center">
-            <img src="/src/assets/images/arrow.svg" alt="arrow" />
+            <img src={Arrow} alt="arrow" />
           </div>
           <div className="flex flex-col w-1/2 justify-center items-center">
             <h5 className="block text-[18px] font-avenir font-extrabold">{props.endTime}</h5>

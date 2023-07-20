@@ -1,3 +1,5 @@
+import QRCode from "../../assets/images/qr-code.svg";
+
 const DetailCardPayment = ({ ticketDay, ticketDate, ticketQrInvoice, brand, type, startTime, startDate, startCity, startStation, endTime, endDate, endCity, endStation }) => {
   return (
     <div className="mt-16 mx-5 flex flex-row justify-between bg-[#F5F5F5]">
@@ -12,7 +14,7 @@ const DetailCardPayment = ({ ticketDay, ticketDate, ticketQrInvoice, brand, type
 
           <div className="flex flex-col justify-center items-center">
             <div className="w-12 h-12">
-              <img className="w-full h-full object-cover" src="/src/assets/images/qr-code.svg" alt="qr-code" />
+              <img className="w-full h-full object-cover" src={QRCode} alt="qr-code" />
             </div>
             <h2 className="mt-1 text-center text-xs">{ticketQrInvoice}</h2>
           </div>

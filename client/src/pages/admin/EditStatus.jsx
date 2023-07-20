@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useMutation } from "react-query";
 import { API } from "../../config/api";
+import LandtickWhite from "../../assets/images/landtick-white.svg";
 
 const EditStatus = ({ drop, id }) => {
   const [form, setForm] = useState({
@@ -40,7 +41,7 @@ const EditStatus = ({ drop, id }) => {
         <div className="flex justify-between overflow-hidden">
           <div className="w-64 h-24 rounded-[120px] -ml-12 -mt-16 flex justify-center pb-1.5 items-end bg-gradient-to-b from-strong-pink from-50% to-soft-pink">
             <h4 className="font-opticon -mb-3 text-xl text-white">LandTick</h4>
-            <img className="h-6 ml-2" src="/src/assets/images/landtick-white.svg" alt="logo" />
+            <img className="h-6 ml-2" src={LandtickWhite} alt="logo" />
           </div>
           <button onClick={drop} type="button" className="text-red-500 text-3xl pr-2 font-bold hover:text-red-600">
             X

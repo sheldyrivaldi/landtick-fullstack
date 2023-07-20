@@ -1,5 +1,6 @@
 import React from "react";
 import FrontImage from "../../assets/images/gambar-depan.png";
+import BackImage from "../../assets/images/gambar-belakang.png";
 
 const Jumbotron = () => {
   return (
@@ -12,7 +13,7 @@ const Jumbotron = () => {
         </div>
         <div className="ml-24 relative py-10">
           <img className="absolute top-7 -left-6" src={FrontImage} alt="gambar-depan" />
-          <img src="/src/assets/images/gambar-belakang.png" alt="gambar-belakang" />
+          <img src={BackImage} alt="gambar-belakang" />
         </div>
       </div>
     </section>

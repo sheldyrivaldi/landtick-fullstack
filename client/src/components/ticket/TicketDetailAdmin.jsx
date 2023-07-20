@@ -1,5 +1,8 @@
 import FormatDate from "../../utils/FormatDate";
 import convertRupiah from "rupiah-format";
+import LandtickWhite from "../../assets/images/landtick-white.svg";
+import QRCode from "../../assets/images/qr-code.svg";
+
 const TicketDetailAdmin = ({ drop, name_train, type_train, start_date, start_time, start_station, arrival_time, destination_station, fullname, no_hp, email, price }) => {
   console.log(start_date);
   const [dayOfWeek, day, monthName, year] = FormatDate(start_date);
@@ -11,7 +14,7 @@ const TicketDetailAdmin = ({ drop, name_train, type_train, start_date, start_tim
         <div className="w-full h-16 bg-white flex justify-between overflow-hidden">
           <div className="w-56 h-full -ml-16 -mt-9 rounded-full flex justify-end pb-1.5 pr-8 items-end bg-gradient-to-b from-strong-pink from-50% to-soft-pink">
             <h4 className="font-opticon -mb-2.5 text-white">LandTick</h4>
-            <img className="h-5 ml-2" src="/src/assets/images/landtick-white.svg" alt="logo" />
+            <img className="h-5 ml-2" src={LandtickWhite} alt="logo" />
           </div>
         </div>
         <div className="px-8">
@@ -64,7 +67,7 @@ const TicketDetailAdmin = ({ drop, name_train, type_train, start_date, start_tim
             </div>
           </div>
           <div className="w-[40%] px-8 flex flex-col items-center">
-            <img src="/src/assets/images/qr-code.svg" alt="qr-code" />
+            <img src={QRCode} alt="qr-code" />
             <h6 className="mt-2">TCK0101</h6>
           </div>
         </div>

@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useContext, useState, useRef, useEffect } from "react";
 import TicketDetail from "./TicketDetail";
+import LandtickWhite from "../../assets/images/landtick-white.svg";
+import QRCode from "../../assets/images/qr-code.svg";
 
 const Ticket = ({ id, type, brand, startTime, startDate, startCity, startStation, endTime, endDate, endCity, endStation, ticketDay, ticketDate, NIK, name, telp, email, ticketQrCode, status }) => {
   const [showModal, setShowModal] = useState(false);
@@ -29,7 +31,7 @@ const Ticket = ({ id, type, brand, startTime, startDate, startCity, startStation
             <div className="w-full h-16 bg-white flex justify-between overflow-hidden">
               <div className="w-56 h-full  -ml-16 -mt-9 rounded-full flex justify-end pb-1.5 pr-8 items-end bg-gradient-to-b from-strong-pink from-50% to-soft-pink">
                 <h4 className="font-opticon -mb-2.5 text-white">LandTick</h4>
-                <img className="h-5 ml-2" src="/src/assets/images/landtick-white.svg" alt="logo" />
+                <img className="h-5 ml-2" src={LandtickWhite} alt="logo" />
               </div>
             </div>
 
@@ -109,7 +111,7 @@ const Ticket = ({ id, type, brand, startTime, startDate, startCity, startStation
               </div>
               <div>
                 <div className="w-[100px] h-[100px] mt-8">
-                  <img className="w-full h-full object-cover" src="/src/assets/images/qr-code.svg" alt="qr-code" />
+                  <img className="w-full h-full object-cover" src={QRCode} alt="qr-code" />
                 </div>
                 <h4 className="font-normal text-xl text-center">{ticketQrCode}</h4>
               </div>

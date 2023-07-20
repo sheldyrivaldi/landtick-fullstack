@@ -9,6 +9,7 @@ import InvoicePayment from "../../components/payment/InvoicePayment";
 import DetailTicketPayment from "../../components/payment/DetailTicketPayment";
 import DetailCardPayment from "../../components/payment/DetailCardPayment";
 import Navbar from "../../components/navbar/Navbar";
+import LandtickWhite from "../../assets/images/landtick-white.svg";
 
 const Payment = () => {
   const navigate = useNavigate();
@@ -97,7 +98,7 @@ const Payment = () => {
               <div className="w-full mt-5 bg-white overflow-hidden border border-[#B7B7B7] rounded-md">
                 <div className="w-56 h-16  -ml-16 -mt-9 rounded-full flex justify-end pb-1.5 pr-8 items-end bg-gradient-to-b from-strong-pink from-50% to-soft-pink">
                   <h4 className="font-opticon -mb-2.5 text-white">LandTick</h4>
-                  <img className="h-5 ml-2" src="/src/assets/images/landtick-white.svg" alt="logo" />
+                  <img className="h-5 ml-2" src={LandtickWhite} alt="logo" />
                 </div>
 
                 <div className="mt-12 flex">
