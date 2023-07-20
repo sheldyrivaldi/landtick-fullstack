@@ -1,16 +1,13 @@
 import { useContext } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { UserContext } from "../../context/Contex";
 import LoginRegisterButton from "./LoginRegisterButton";
 import NameAndProfile from "./NameAndProfile";
 import Landtick from "../../assets/images/landtick.svg";
+
 const Navbar = () => {
   const [state] = useContext(UserContext);
-  const navigate = useNavigate();
-  const handdleClickHome = () => {
-    return navigate("/");
-  };
 
   return (
     <nav className="bg-white  fixed w-full z-20 top-0 left-0 pl-20 pr-16 border-b border-gray-200 shadow-lg">

@@ -11,7 +11,6 @@ const MyTicket = () => {
     const response = await API.get("/ticket/my-ticket");
     return response.data.data;
   });
-  console.log(tickets);
 
   return (
     <>

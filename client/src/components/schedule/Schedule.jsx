@@ -6,6 +6,7 @@ import { API } from "../../config/api";
 import convertRupiah from "rupiah-format";
 import { GetDuration } from "../../utils/GetDuration";
 import SearchTicket from "../home/SearchTicket";
+
 const Schedule = () => {
   const [form, setForm] = useState({
     start_station: "",

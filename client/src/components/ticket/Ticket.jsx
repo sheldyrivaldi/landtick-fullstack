@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useContext, useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import TicketDetail from "./TicketDetail";
 import LandtickWhite from "../../assets/images/landtick-white.svg";
 import QRCode from "../../assets/images/qr-code.svg";
@@ -9,10 +9,7 @@ const Ticket = ({ id, type, brand, startTime, startDate, startCity, startStation
 
   const navigate = useNavigate();
 
-  const containerRef = useRef();
-
   const handleClickPayment = () => {
-    console.log(`/user/payment/${id}`);
     navigate(`/user/payment/${id}`);
   };
 
@@ -37,9 +34,7 @@ const Ticket = ({ id, type, brand, startTime, startDate, startCity, startStation
 
             <div className="w-full h-40 pl-10 flex justify-start items-start bg-white">
               <div>
-                <h2 ref={containerRef} className=" font-bold text-2xl">
-                  {brand}
-                </h2>
+                <h2 className=" font-bold text-2xl">{brand}</h2>
                 <h4 className=" text-sm mt-2"> {type}</h4>
                 {status == "Approved" || status == "approved" ? (
                   <div className="mt-4 p-1 w-16 text-center bg-[#3CF71E] z-1 bg-opacity-20">
@@ -134,7 +129,7 @@ const Ticket = ({ id, type, brand, startTime, startDate, startCity, startStation
           )}
         </div>
       </section>
-      {showModal ? (
+      {showModal && status == "Approved" ? (
         <TicketDetail
           ticketQrInvoice="INV0101"
           ticketQrCode={ticketQrCode}

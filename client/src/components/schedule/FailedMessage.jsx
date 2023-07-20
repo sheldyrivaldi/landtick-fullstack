@@ -1,5 +1,3 @@
-import { useNavigate } from "react-router-dom";
-
 const FailedMessage = ({ dropModal }) => {
   const handleClickDropModal = () => {
     dropModal();

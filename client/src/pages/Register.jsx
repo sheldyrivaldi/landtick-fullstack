@@ -1,5 +1,5 @@
 import "../assets/css/index.css";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useMutation } from "react-query";
 import { API } from "../config/api";
 import { useNavigate } from "react-router-dom";
@@ -39,7 +39,6 @@ const Register = ({ dropRegister }) => {
       };
 
       const response = await API.post("/register", form, config);
-      console.log("Register Success : ", response);
 
       dropRegister();
 

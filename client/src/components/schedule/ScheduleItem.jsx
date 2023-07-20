@@ -1,6 +1,5 @@
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../context/Contex";
-import { useNavigate } from "react-router-dom";
 import SuccessMessage from "./SuccessMessage";
 import FailedMessage from "./FailedMessage";
 import { useMutation } from "react-query";
@@ -11,8 +10,6 @@ const ScheduleItem = (props) => {
   const [state] = useContext(UserContext);
   const [successMessage, setSuccessMessage] = useState(false);
   const [failedMessage, setFailedMessage] = useState(false);
-  const navigate = useNavigate();
-
   const form = {
     ticket_id: props.id,
   };
@@ -41,7 +38,6 @@ const ScheduleItem = (props) => {
       setAuthToken(localStorage.token);
 
       const response = await API.post("/transaction", form, config);
-      console.log("Create transaction success", response);
 
       showModalSuccess();
     } catch (err) {

@@ -21,7 +21,6 @@ const EditStatus = ({ drop, id }) => {
       };
 
       const response = await API.patch(`/transaction/${id}`, form, config);
-      console.log("Update transaction success", response);
 
       setForm({
         status: "",
@@ -29,7 +28,6 @@ const EditStatus = ({ drop, id }) => {
 
       drop();
     } catch (err) {
-      console.log(form);
       console.log("Update transaction failed", err);
     }
   });

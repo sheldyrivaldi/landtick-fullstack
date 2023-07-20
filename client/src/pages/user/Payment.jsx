@@ -16,15 +16,13 @@ const Payment = () => {
   setAuthToken(localStorage.token);
 
   const param = useParams();
-  console.log(param.id);
 
   const { data: tickets } = useQuery("myTicketPaymentCache", async () => {
     try {
       const response = await API.get(`/transaction/${param.id}`);
-      console.log("ini response", response);
       return response.data.data.transaction;
     } catch (error) {
-      console.log("gagal", error);
+      console.log("Fetching transaction failed!", error);
       throw error;
     }
   });
@@ -45,17 +43,13 @@ const Payment = () => {
       };
 
       const response = await API.post("/transaction/midtrans", form, config);
-      console.log("transaction success:", response);
 
       const token = response.data.data.token;
-      console.log(token);
       window.snap.pay(token, {
         onSuccess: function (result) {
-          console.log(result);
           navigate("/user/ticket");
         },
         onPending: function (result) {
-          console.log(result);
           navigate("/user/ticket");
         },
         onError: function (result) {

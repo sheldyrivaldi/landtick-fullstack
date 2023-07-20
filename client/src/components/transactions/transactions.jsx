@@ -19,7 +19,7 @@ const Transactions = () => {
       await API.delete(`/transaction/${id}`);
       refetch();
     } catch (error) {
-      console.log(error);
+      console.log("Delete failed!", error);
     }
   });
 

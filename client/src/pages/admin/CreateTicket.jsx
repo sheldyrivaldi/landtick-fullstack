@@ -39,7 +39,6 @@ const CreateTicket = () => {
       };
 
       const response = await API.post("/ticket", form, config);
-      console.log("Create ticket success", response);
 
       setForm({
         name_train: "",
@@ -55,7 +54,6 @@ const CreateTicket = () => {
 
       navigate("/admin");
     } catch (err) {
-      console.log(form);
       console.log("Create ticket failed : ", err);
     }
   });
