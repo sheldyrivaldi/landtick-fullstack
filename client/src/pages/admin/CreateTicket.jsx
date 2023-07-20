@@ -1,7 +1,7 @@
 import { useQuery, useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/navbar/Navbar";
-import { API } from "../../config/api";
+import { API, setAuthToken } from "../../config/api";
 
 import { useState } from "react";
 
@@ -13,6 +13,7 @@ const CreateTicket = () => {
     return response.data.data.station;
   });
 
+  setAuthToken(localStorage.token);
   const [form, setForm] = useState({
     name_train: "",
     type_train: "",
