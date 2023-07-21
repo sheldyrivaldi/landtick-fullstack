@@ -5,6 +5,7 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import Home from "./pages/user/Home";
 import MyTicket from "./pages/user/MyTicket";
 import Payment from "./pages/user/Payment";
+import PaymentPending from "./pages/user/PaymentPending";
 import Transactions from "./components/transactions/transactions";
 import CreateTicket from "./pages/admin/CreateTicket";
 import { PrivateRouteUser, PrivateRouteAdmin, PrivateRouteLogin } from "./components/private_routes/PrivateRoutes";
@@ -59,6 +60,7 @@ const App = () => {
           <Route element={<PrivateRouteLogin />}>
             <Route element={<PrivateRouteUser />}>
               <Route path="/user/ticket" element={<MyTicket />} />
+              <Route path="/user/payment" element={<PaymentPending />} />
               <Route path="/user/payment/:id" element={<Payment />} />
             </Route>
             <Route element={<PrivateRouteAdmin />}>

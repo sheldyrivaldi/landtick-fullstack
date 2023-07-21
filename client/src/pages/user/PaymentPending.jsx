@@ -12,7 +12,7 @@ const MyTicket = () => {
     return response.data.data;
   });
 
-  const ticketApproved = tickets?.filter((elements) => elements.status == "Approved");
+  const ticketPending = tickets?.filter((elements) => elements.status == "Pending");
 
   return (
     <>
@@ -20,7 +20,7 @@ const MyTicket = () => {
       <section id="my-ticket" className="w-full pt-[44px] bg-white">
         <h1 className="font-avenir text-3xl mb-10 mt-20 ml-20 p-1">Tiket Saya</h1>
         <div className="grid grid-flow-row gap-8 pb-10">
-          {ticketApproved?.map((item, index) => {
+          {ticketPending?.map((item, index) => {
             const [dayOfWeek, day, monthName, year] = formatDate(item?.ticket?.start_date);
 
             return (
