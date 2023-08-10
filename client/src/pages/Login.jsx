@@ -64,7 +64,7 @@ const Login = ({ dropLogin, showRegister }) => {
       <div className="w-[416px] h-[490px] mx-auto flex items-center justify-center relative z-10 bg-white rounded shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px]">
         <form onSubmit={(e) => handleSubmit.mutate(e)}>
           <h1 className="text-center text-4xl font-semibold uppercase mb-16 bg-clip-text text-transparent bg-gradient-to-t from-strong-pink to-soft-pink">Login</h1>
-          <input name="email" value={form.username} type="email" onChange={handleChange} className="block mx-auto w-[350px] h-[50] mb-8 text-2xl border-2 border-soft p-2 placeholder-soft rounded-md" placeholder="Username" />
+          <input name="email" value={form.username} type="email" onChange={handleChange} className="block mx-auto w-[350px] h-[50] mb-8 text-2xl border-2 border-soft p-2 placeholder-soft rounded-md" placeholder="Email" />
           <input name="password" value={form.password} type="password" onChange={handleChange} className="block mx-auto w-[350px] h-[50] mb-16 text-2xl border-2 border-soft p-2 placeholder-soft rounded-md" placeholder="Password" />
           <button type="submit" className="font-bold block text-white mx-auto w-[350px] h-[50] p-2 mb-4 text-[24px] bg-gradient-to-t from-strong-pink to-soft-pink rounded-full">
             Login
